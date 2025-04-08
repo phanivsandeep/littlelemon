@@ -1,38 +1,225 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Markazi+Text:wght@400;500;700&display=swap');
+
+:root {
+  --primary-green: #495E57;
+  --primary-yellow: #F4CE14;
+  --secondary-salmon: #EE9972;
+  --secondary-peach: #FBDABB;
+  --secondary-light: #EDEFEE;
+  --secondary-dark: #333333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  font-family: 'Karla', sans-serif;
+  line-height: 1.5;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    "nav"
+    "header"
+    "main"
+    "footer";
   min-height: 100vh;
+}
+
+nav {
+  grid-area: nav;
+  background-color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger-icon {
+  width: 24px;
+  height: 24px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin-left: auto;
+}
+
+nav a {
+  font-family: 'Karla', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--secondary-dark);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--primary-yellow);
+}
+
+header {
+  grid-area: header;
+  background-color: var(--primary-green);
+  color: white;
+  padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.header-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.header-image {
+  flex: 1;
+  height: 300px;
+  background-color: #333;
+  border-radius: 16px;
+}
+
+header h1 {
+  font-family: 'Markazi Text', serif;
+  font-size: 64px;
+  font-weight: 500;
+  color: var(--primary-yellow);
+  margin: 0;
+}
+
+header p {
+  font-family: 'Markazi Text', serif;
+  font-size: 40px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.cta-button {
+  background-color: var(--primary-yellow);
+  color: var(--secondary-dark);
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: fit-content;
+  margin-top: 1rem;
+}
+
+.cta-button:hover {
+  background-color: #e6c213;
+}
+
+main {
+  grid-area: main;
+  padding: 3rem 2rem;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main-content {
+  width: 100%;
+  max-width: 1200px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+footer {
+  grid-area: footer;
+  background-color: var(--secondary-light);
+  padding: 3rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 48px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  header p {
+    font-size: 32px;
+  }
+  
+  .header-content {
+    flex-direction: column;
+  }
+  
+  .footer-content {
+    flex-wrap: wrap;
+  }
+  
+  .footer-content > div {
+    flex-basis: calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .hamburger {
+    display: block;
+  }
+  
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+  
+  nav ul.active {
+    display: flex;
+  }
+  
+  .footer-content > div {
+    flex-basis: 100%;
   }
 }
